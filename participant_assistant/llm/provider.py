@@ -85,7 +85,7 @@ class OpenAIProvider(LLMProvider):
             "Content-Type": "application/json",
         }
         response = self.session.post(
-            url, json=payload, headers=headers, timeout=self.settings.whistle_timeout_seconds
+            url, json=payload, headers=headers, timeout=self.settings.llm_timeout_seconds
         )
         if response.status_code >= 400:
             raise RuntimeError(

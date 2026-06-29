@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Iterable, List, Optional
 
 from .config import Settings, load_settings
 from .llm.provider import LLMProvider, Message, build_provider
@@ -115,7 +115,7 @@ def _format_participant(
     return "\n".join(lines)
 
 
-def _unique(values) -> List[str]:
+def _unique(values: Iterable[Any]) -> List[str]:
     seen = set()
     result: List[str] = []
     for value in values:

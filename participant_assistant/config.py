@@ -58,6 +58,7 @@ class Settings:
     llm_provider: str = "echo"
     llm_model: str = "gpt-4o-mini"
     llm_temperature: float = 0.2
+    llm_timeout_seconds: int = 30
     openai_api_key: Optional[str] = None
     llm_base_url: str = "https://api.openai.com/v1"
 
@@ -91,6 +92,7 @@ def load_settings(dotenv_path: str = ".env") -> Settings:
         llm_provider=_get("LLM_PROVIDER", "echo"),
         llm_model=_get("LLM_MODEL", "gpt-4o-mini"),
         llm_temperature=float(_get("LLM_TEMPERATURE", "0.2")),
+        llm_timeout_seconds=int(_get("LLM_TIMEOUT_SECONDS", "30")),
         openai_api_key=_get("OPENAI_API_KEY"),
         llm_base_url=_get("LLM_BASE_URL", "https://api.openai.com/v1"),
         knowledge_base_dir=_get("KNOWLEDGE_BASE_DIR", "data/knowledge_base"),
