@@ -146,11 +146,20 @@
   <aside class="sidebar">
     <h2>Quick Topics</h2>
     <button class="topic-btn" data-q="How do I check my points balance?">Check points balance</button>
+    <button class="topic-btn" data-q="How much points I have earned till date?">Earned points</button>
+    <button class="topic-btn" data-q="Tell me pending points?">Pending points</button>
+    <button class="topic-btn" data-q="Why my points are in pending status?">Pending reason</button>
     <button class="topic-btn" data-q="How can I earn more points?">Earn more points</button>
     <button class="topic-btn" data-q="What are the badge tiers and their benefits?">Badge tiers</button>
+    <button class="topic-btn" data-q="What is my current badge?">My badge</button>
+    <button class="topic-btn" data-q="What is my next badge?">Next badge</button>
     <button class="topic-btn" data-q="How do I create a support case?">Create a case</button>
     <button class="topic-btn" data-q="How do I send recognition to a colleague?">Send recognition</button>
+    <button class="topic-btn" data-q="How many recognition I have received?">My recognitions</button>
+    <button class="topic-btn" data-q="Who have given me recognition most?">Top recognizer</button>
     <button class="topic-btn" data-q="How do I submit a product claim?">Submit a claim</button>
+    <button class="topic-btn" data-q="Tell me product claims summary?">My claims</button>
+    <button class="topic-btn" data-q="How many points I have earned through product claims?">Claim points</button>
     <button class="topic-btn" data-q="What is the Learn and Earn program?">Learn &amp; Earn</button>
     <button class="topic-btn" data-q="How do I redeem my points?">Redeem points</button>
     <button class="topic-btn" data-q="When do my points expire?">Points expiry</button>
@@ -176,123 +185,6 @@
 
 <div id="toast"></div>
 
-<script>
-  const messagesEl = document.getElementById('messages');
-  const inputEl    = document.getElementById('question-input');
-  const sendBtn    = document.getElementById('send-btn');
-  const toast      = document.getElementById('toast');
-
-  let sessionId = null;
-  const history = [];
-
-  function scrollBottom() {
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-  }
-
-  function showToast(msg, duration = 4000) {
-    toast.textContent = msg;
-    toast.style.display = 'block';
-    setTimeout(() => { toast.style.display = 'none'; }, duration);
-  }
-
-  function appendMessage(role, text, sources = []) {
-    const wrap = document.createElement('div');
-    wrap.className = `msg ${role}`;
-
-    const avatar = document.createElement('div');
-    avatar.className = 'avatar';
-    avatar.textContent = role === 'user' ? '👤' : '🤖';
-
-    const inner = document.createElement('div');
-    const bubble = document.createElement('div');
-    bubble.className = 'bubble';
-    bubble.textContent = text;
-    inner.appendChild(bubble);
-
-    if (sources.length > 0) {
-      const srcEl = document.createElement('div');
-      srcEl.className = 'sources';
-      srcEl.innerHTML = '📚 Sources: ' + sources.map(s =>
-        `<span title="Score: ${(s.score * 100).toFixed(1)}%">${s.title}</span>`
-      ).join('');
-      inner.appendChild(srcEl);
-    }
-
-    wrap.appendChild(avatar);
-    wrap.appendChild(inner);
-    messagesEl.appendChild(wrap);
-    scrollBottom();
-    return bubble;
-  }
-
-  function showTyping() {
-    const wrap = document.createElement('div');
-    wrap.className = 'msg bot typing-indicator';
-    wrap.id = 'typing';
-    wrap.innerHTML = `<div class="avatar">🤖</div><div><div class="bubble"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>`;
-    messagesEl.appendChild(wrap);
-    scrollBottom();
-  }
-
-  function hideTyping() {
-    const el = document.getElementById('typing');
-    if (el) el.remove();
-  }
-
-  async function sendMessage(question) {
-    if (!question.trim()) return;
-    sendBtn.disabled = true;
-    inputEl.value = '';
-
-    appendMessage('user', question);
-    showTyping();
-
-    try {
-      const body = { question, history };
-      if (sessionId) body.sessionId = sessionId;
-
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
-
-      const data = await res.json();
-      hideTyping();
-
-      if (!res.ok) {
-        showToast(data.error?.message || 'Something went wrong. Please try again.');
-        return;
-      }
-
-      sessionId = data.sessionId;
-      history.push({ role: 'user', content: question });
-      history.push({ role: 'assistant', content: data.answer });
-      // Keep history manageable (last 10 turns)
-      while (history.length > 20) history.splice(0, 2);
-
-      appendMessage('bot', data.answer, data.sources || []);
-    } catch (err) {
-      hideTyping();
-      showToast('Network error. Please check your connection.');
-    } finally {
-      sendBtn.disabled = false;
-      inputEl.focus();
-    }
-  }
-
-  sendBtn.addEventListener('click', () => sendMessage(inputEl.value));
-
-  inputEl.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage(inputEl.value);
-    }
-  });
-
-  document.querySelectorAll('.topic-btn').forEach((btn) => {
-    btn.addEventListener('click', () => sendMessage(btn.dataset.q));
-  });
-</script>
+<script src="/app.js" defer></script>
 </body>
 </html>

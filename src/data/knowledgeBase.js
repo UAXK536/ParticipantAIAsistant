@@ -70,6 +70,101 @@ You can download a 12-month statement from the Reports section.`,
 - Expired points cannot be reinstated under normal circumstances; contact support for exceptions.`,
   },
 
+  // ─── PARTICIPANT RUNTIME Q&A ───────────────────────────────────────────────
+  {
+    id: 'participant-earned-points-total',
+    category: 'participant-points',
+    title: 'Participant Earned Points Total',
+    questions: [
+      'How much points I have earned till date?',
+      'How many points have I earned till date?',
+      'Tell me earned points?',
+      'Tell me my earned points?',
+      'How many earned points do I have?',
+    ],
+    answer: 'You have earned 2500 points till date.',
+    content: `Question: How much points I have earned till date?
+Answer: You have earned 2500 points till date.
+
+Question: Tell me earned points?
+Answer: You have earned 2500 points till date.`,
+  },
+  {
+    id: 'participant-pending-points-total',
+    category: 'participant-points',
+    title: 'Participant Pending Points Total',
+    questions: [
+      'Tell me pending points?',
+      'How many pending points do I have?',
+      'What are my pending points?',
+      'Show pending points',
+    ],
+    answer: 'You have 25 points in pending status.',
+    content: `Question: Tell me pending points?
+Answer: You have 25 points in pending status.`,
+  },
+  {
+    id: 'participant-pending-points-reason',
+    category: 'participant-points',
+    title: 'Participant Pending Points Reason',
+    questions: [
+      'Why my points are in pending status?',
+      'Why points are pending?',
+      'Why are my points pending?',
+      'Why are points stuck?',
+    ],
+    answer: 'I have checked the system. Your points are pending due to a process failure. I can see the points in the ledger, but due to an unknown reason the points are stuck. Please contact your administrator.',
+    content: `Question: Why my points are in pending status?
+Answer: I have checked the system. Your points are pending due to a process failure. I can see the points in the ledger, but due to an unknown reason the points are stuck. Please contact your administrator.
+
+Question: Why points are pending?
+Answer: I have checked the system. Your points are pending due to a process failure. I can see the points in the ledger, but due to an unknown reason the points are stuck. Please contact your administrator.`,
+  },
+
+  // ─── PARTICIPANT BADGE Q&A ─────────────────────────────────────────────────
+  {
+    id: 'participant-current-badge',
+    category: 'participant-badges',
+    title: 'Participant Current Badge',
+    questions: [
+      'What is my current badge?',
+      'Which badge do I have?',
+      'Tell me my badge status?',
+      'Show my current badge',
+    ],
+    answer: 'Your current badge is Silver Badge.',
+    content: `Question: What is my current badge?
+Answer: Your current badge is Silver Badge.`,
+  },
+  {
+    id: 'participant-earned-badges',
+    category: 'participant-badges',
+    title: 'Participant Earned Badges',
+    questions: [
+      'How many badges I have earned?',
+      'How many badges have I earned?',
+      'Tell me earned badges?',
+      'Which badges have I earned?',
+    ],
+    answer: 'You have earned 4 badges: Silver Badge, First Purchase Badge, Learning Champion Badge, and Recognition Star Badge.',
+    content: `Question: How many badges I have earned?
+Answer: You have earned 4 badges: Silver Badge, First Purchase Badge, Learning Champion Badge, and Recognition Star Badge.`,
+  },
+  {
+    id: 'participant-next-badge',
+    category: 'participant-badges',
+    title: 'Participant Next Badge Progress',
+    questions: [
+      'What is my next badge?',
+      'How many points needed for next badge?',
+      'How much more points for Gold badge?',
+      'Tell me next badge progress?',
+    ],
+    answer: 'Your next badge is Gold Badge. You need 7500 more lifetime points to reach Gold Badge.',
+    content: `Question: What is my next badge?
+Answer: Your next badge is Gold Badge. You need 7500 more lifetime points to reach Gold Badge.`,
+  },
+
   // ─── BADGES ─────────────────────────────────────────────────────────────────
   {
     id: 'badges-overview',
@@ -219,6 +314,50 @@ The leaderboard resets on the 1st of each month. Historical leaderboard results 
 Hall of Fame section. The leaderboard can be filtered by team, region, or company-wide view.`,
   },
 
+  // ─── PARTICIPANT RECOGNITION Q&A ───────────────────────────────────────────
+  {
+    id: 'participant-recognition-received-total',
+    category: 'participant-recognition',
+    title: 'Participant Recognition Received Total',
+    questions: [
+      'How many recognition I have received?',
+      'How many recogniton I have received?',
+      'How many recognitions have I received?',
+      'Tell me received recognition?',
+    ],
+    answer: 'You have received 12 recognitions.',
+    content: `Question: How many recognition I have received?
+Answer: You have received 12 recognitions.`,
+  },
+  {
+    id: 'participant-top-recognizer',
+    category: 'participant-recognition',
+    title: 'Participant Top Recognition Sender',
+    questions: [
+      'Who have given me recognition most?',
+      'Who has given me recognition most?',
+      'Who recognized me the most?',
+      'Who gave me most recognition?',
+    ],
+    answer: 'Mark Steel has given you the most recognition.',
+    content: `Question: Who have given me recognition most?
+Answer: Mark Steel has given you the most recognition.`,
+  },
+  {
+    id: 'participant-recognition-earned-points',
+    category: 'participant-recognition',
+    title: 'Participant Recognition Earned Points',
+    questions: [
+      'How many points I have earned through recognition?',
+      'How many points have I earned through recognition?',
+      'Tell me recognition points?',
+      'How much recognition points have I earned?',
+    ],
+    answer: 'You have earned 450 points through recognition.',
+    content: `Question: How many points I have earned through recognition?
+Answer: You have earned 450 points through recognition.`,
+  },
+
   // ─── PRODUCT CLAIMS ─────────────────────────────────────────────────────────
   {
     id: 'claims-overview',
@@ -268,6 +407,50 @@ you may re-submit with corrected documentation within 14 days.`,
 You can view all claim history in the My Claims section. Claims can be filtered by date, status, or product.
 If your claim is rejected and you believe the decision is incorrect, raise a Case from the Claims detail view.
 A claim can be appealed once. Re-submitted claims that are rejected are final.`,
+  },
+
+  // ─── PARTICIPANT PRODUCT CLAIM Q&A ─────────────────────────────────────────
+  {
+    id: 'participant-product-claims-summary',
+    category: 'participant-product-claims',
+    title: 'Participant Product Claims Summary',
+    questions: [
+      'How many product claims I have submitted?',
+      'How many product claims have I submitted?',
+      'Tell me product claims summary?',
+      'Show my product claims',
+    ],
+    answer: 'You have submitted 8 product claims. 6 are approved, 2 are pending, and 0 are rejected.',
+    content: `Question: How many product claims I have submitted?
+Answer: You have submitted 8 product claims. 6 are approved, 2 are pending, and 0 are rejected.`,
+  },
+  {
+    id: 'participant-pending-product-claims',
+    category: 'participant-product-claims',
+    title: 'Participant Pending Product Claims',
+    questions: [
+      'How many product claims are pending?',
+      'Tell me pending product claims?',
+      'Why my product claim is pending?',
+      'Why are my product claims pending?',
+    ],
+    answer: 'You have 2 product claims pending. They are currently under review because the uploaded proof of purchase needs additional validation.',
+    content: `Question: How many product claims are pending?
+Answer: You have 2 product claims pending. They are currently under review because the uploaded proof of purchase needs additional validation.`,
+  },
+  {
+    id: 'participant-product-claim-points',
+    category: 'participant-product-claims',
+    title: 'Participant Product Claim Points',
+    questions: [
+      'How many points I have earned through product claims?',
+      'How many points have I earned through product claims?',
+      'Tell me product claim points?',
+      'How much product claim points have I earned?',
+    ],
+    answer: 'You have earned 300 points through approved product claims.',
+    content: `Question: How many points I have earned through product claims?
+Answer: You have earned 300 points through approved product claims.`,
   },
 
   // ─── LEARN AND EARN ─────────────────────────────────────────────────────────
